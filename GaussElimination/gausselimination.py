@@ -9,20 +9,23 @@ def pivot(matrix, result, n):
     tmp = result[n]
     result[n] = result[n_t]
     result[n_t] = tmp
-    return matrix, result;
+    return matrix, result
+
 
 def mulList(l, s):
-    return [x*s for x in l];
+    return [x*s for x in l]
+
 
 def addList(l0, l1):
     tmp = []
     for i in range(len(l0)):
         tmp.append(l0[i] + l1[i])
-    return tmp;
+    return tmp
+
 
 def gaussElimination(matrix, result):
     for j in range(len(matrix)):
-        #matrix, result = pivot(matrix, result, j)
+        matrix, result = pivot(matrix, result, j)
         scale = 1/matrix[j][j]
         matrix[j] = mulList(matrix[j], scale)
         result[j] = result[j] * scale
@@ -36,4 +39,4 @@ def gaussElimination(matrix, result):
             result[i] = result[i] - result[j] * matrix[i][j]
             matrix[i] = addList(matrix[i], mulList(matrix[j], -1*matrix[i][j]))
 
-    return result;
+    return result
